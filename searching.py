@@ -30,9 +30,18 @@ def linear_search(sequence, number):
 
 def pattern_search(sequence, vzor):
     mnozina_idx = set()
-    for index in range(len(sequence)):
-        if vzor == sequence[index:index+len(vzor)]:
+    index = 0
+    while index < len(sequence) - len(vzor):
+        idx = 0
+        for letter in sequence[index:index+len(vzor)]:
+            if letter != vzor[idx]:
+                break
+            else:
+                idx += 1
+        if idx == len(vzor):
             mnozina_idx.add(index)
+        index += 1
+
     return mnozina_idx
 
 
