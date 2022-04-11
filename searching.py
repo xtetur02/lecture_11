@@ -28,12 +28,24 @@ def linear_search(sequence, number):
     return slovnik
 
 
+def pattern_search(sequence, vzor):
+    mnozina_idx = set()
+    for index in range(len(sequence)):
+        if vzor == sequence[index:index+len(vzor)]:
+            mnozina_idx.add(index)
+    return mnozina_idx
+
+
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)
     hledane_cislo = 5
     results = linear_search(sequential_data, hledane_cislo)
     print(results)
+    sequence = read_data("sequential.json", "dna_sequence")
+    vzor = "ATA"
+    dna_search = pattern_search(sequence, vzor)
+    print(dna_search)
 
 if __name__ == '__main__':
     main()
